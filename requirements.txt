@@ -1,0 +1,2 @@
+dbt-core>=2.0.0,<3
+dbt-duckdb>=1.8.0

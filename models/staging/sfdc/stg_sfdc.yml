@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_sfdc__leads
+    description: Staging model for Salesforce leads
+    columns:
+      - name: lead_id
+        description: Unique lead identifier
+        data_tests:
+          - unique
+          - not_null
+      - name: email
+        description: Lead email address
+        data_tests:
+          - not_null
+      - name: status
+        description: Lead status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Open', 'Working', 'Qualified', 'Unqualified', 'Converted']
+      - name: is_converted
+        description: Whether the lead has been converted
+        data_tests:
+          - not_null
+
+  - name: stg_sfdc__campaigns
+    description: Staging model for Salesforce campaigns
+    columns:
+      - name: campaign_id
+        description: Unique campaign identifier
+        data_tests:
+          - unique
+          - not_null
+      - name: campaign_name
+        description: Campaign name
+        data_tests:
+          - not_null
+
+  - name: stg_sfdc__campaign_members
+    description: Staging model for Salesforce campaign members
+    columns:
+      - name: campaign_member_id
+        description: Unique campaign member identifier
+        data_tests:
+          - unique
+          - not_null
+      - name: campaign_id
+        description: Foreign key to campaigns
+        data_tests:
+          - not_null
+      - name: lead_id
+        description: Foreign key to leads
+        data_tests:
+          - not_null

@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: dim_leads
+    description: Dimension table for leads with conversion metrics
+    columns:
+      - name: lead_id
+        description: Unique lead identifier
+        data_tests:
+          - unique
+          - not_null
+      - name: email
+        description: Lead email address
+        data_tests:
+          - not_null
+
+  - name: dim_campaigns
+    description: Dimension table for campaigns with duration metrics
+    columns:
+      - name: campaign_id
+        description: Unique campaign identifier
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_campaign_members
+    description: Fact table for campaign membership with lead and campaign context
+    columns:
+      - name: campaign_member_id
+        description: Unique campaign member identifier
+        data_tests:
+          - unique
+          - not_null
+      - name: campaign_id
+        description: Foreign key to campaigns
+        data_tests:
+          - not_null
+      - name: lead_id
+        description: Foreign key to leads
+        data_tests:
+          - not_null
+
+  - name: mart_ab_lead_performance
+    description: A/B experiment performance metrics by variant
+    columns:
+      - name: experiment_key
+        description: Unique experiment identifier
+        data_tests:
+          - not_null
+      - name: variant
+        description: A/B test variant
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['A', 'B']
