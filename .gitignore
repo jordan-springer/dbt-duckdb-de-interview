@@ -226,3 +226,4 @@ logs/
 profiles.yml
 .user.yml
 package-lock.yml
+dbt_internal_packages/
