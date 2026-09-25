@@ -9,8 +9,9 @@
 ## Success criteria
 Before your interview, you must confirm:
 - ✅ **DuckDB CLI installed** (`duckdb --version` works — this is the standalone binary, not just the Python adapter)
-- ✅ **dbt-core + dbt-duckdb installed** (`dbt --version` shows `dbt-core>=1.8.0`)
+- ✅ **dbt installed** (`dbt --version` shows `dbt-core>=1.8.0` — both dbt 1.8-1.9.x and 2.x work)
 - ✅ DuckDB adapter configured (`dbt debug` passes)
+- ✅ `data/` directory exists (prevents "No such file or directory" error)
 - ✅ Seeds, models, tests run successfully
 - ✅ You can query `data/interview.duckdb` directly with the DuckDB CLI
 - ✅ You can modify a model and redeploy with `dbt run --select ...`
@@ -23,13 +24,16 @@ Before your interview, you must confirm:
 brew install duckdb  # macOS
 # Linux: see SETUP.md for install script
 
-# Install dbt with the DuckDB adapter
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
+# Install dbt (2.x has built-in DuckDB; 1.8-1.9.x needs dbt-duckdb)
+pip install "dbt-core>=1.8.0" dbt-duckdb  # Works for both versions
 
 # Clone and configure
 git clone https://github.com/jordan-springer/dbt-duckdb-de-interview.git
 cd dbt-duckdb-de-interview
 cp profiles.yml.example ~/.dbt/profiles.yml
+
+# Create data directory (required before first connection)
+mkdir -p data
 
 # Run the pipeline
 dbt deps
@@ -47,7 +51,10 @@ duckdb data/interview.duckdb
 winget install DuckDB.cli
 
 # Install dbt (then see SETUP.md for detailed profile configuration)
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
+pip install "dbt-core>=1.8.0" dbt-duckdb
+
+# Create data directory before running dbt
+mkdir data
 ```
 
 See **[SETUP.md](SETUP.md)** for detailed Windows instructions (CMD vs PowerShell, profile paths) and troubleshooting.

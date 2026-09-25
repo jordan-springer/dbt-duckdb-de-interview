@@ -1,2 +1,5 @@
-dbt-core>=1.8.0,<2
+# dbt 2.x has built-in DuckDB support (adapter type: "duckdb (remote)")
+# dbt 1.8-1.9.x requires dbt-duckdb adapter package
+# Install dbt-duckdb for 1.8-1.9; it's harmless (unused) on 2.x
+dbt-core>=1.8.0
 dbt-duckdb>=1.8.0
