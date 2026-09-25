@@ -1,0 +1,69 @@
+id,lead_id,createddate,campaign,cost,utm_source,utm_medium,utm_campaign,gclid
+B001,L001,2099-01-10,Google - Brand Purchase,0.0,google,cpc,brand_purchase,GCL-AAA001
+B002,L002,2099-01-05,Aggregator X - Refi List,42.5,,,,
+B003,L002,2099-04-01,Google - Refi Reengage,0.0,google,cpc,refi_reengage,GCL-BBB002
+B004,L003,2099-01-01,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-0
+B005,L003,2099-02-15,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-1
+B006,L003,2099-04-01,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-2
+B007,L003,2099-05-16,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-3
+B008,L003,2099-06-30,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-4
+B009,L003,2099-08-14,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-5
+B010,L003,2099-09-28,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-6
+B011,L003,2099-11-12,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-7
+B012,L003,2099-12-27,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L003-8
+B013,L004,2099-01-01,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-0
+B014,L004,2099-02-15,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-1
+B015,L004,2099-04-01,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-2
+B016,L004,2099-05-16,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-3
+B017,L004,2099-06-30,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-4
+B018,L004,2099-08-14,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-5
+B019,L004,2099-09-28,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-6
+B020,L004,2099-11-12,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-7
+B021,L004,2099-12-27,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L004-8
+B022,L005,2099-01-01,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-0
+B023,L005,2099-02-15,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-1
+B024,L005,2099-04-01,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-2
+B025,L005,2099-05-16,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-3
+B026,L005,2099-06-30,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-4
+B027,L005,2099-08-14,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-5
+B028,L005,2099-09-28,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-6
+B029,L005,2099-11-12,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-7
+B030,L005,2099-12-27,Google - Always On SEM,0.0,google,cpc,always_on_sem,GCL-L005-8
+B031,L006,2099-02-01,Bing - Purchase Search,0.0,bing,cpc,purchase_search,GCL-FFF006
+B032,L006B,2099-02-03,Bing - Purchase Search,0.0,bing,cpc,purchase_search,GCL-FFF006B
+B033,L007,2099-01-15,Aggregator X - Purchase List,38.0,,,,
+B034,L007,2099-02-24,Aggregator X - Purchase List,38.0,,,,
+B035,L008,2099-02-10,Purchased Leads - Vendor Y,55.0,,,,
+B036,L008,2099-04-18,Google - Purchase Switch,0.0,google,cpc,purchase_switch,GCL-HHH008
+B037,L009,2099-01-12,Google - Gen Campaign,0.0,google,cpc,gen_campaign,GCL-L009
+B038,L010,2099-02-13,Bing - Gen Campaign,0.0,bing,cpc,gen_campaign,GCL-L010
+B039,L011,2099-03-14,Purchased Leads - Gen Campaign,35.0,,,,
+B040,L012,2099-04-15,Movoto - Gen Campaign,0.0,,,,
+B041,L013,2099-01-16,Organic - Gen Campaign,0.0,,,,
+B042,L014,2099-02-17,Direct - Gen Campaign,0.0,,,,
+B043,L015,2099-03-18,Google - Gen Campaign,0.0,google,cpc,gen_campaign,GCL-L015
+B044,L016,2099-04-19,Bing - Gen Campaign,0.0,bing,cpc,gen_campaign,GCL-L016
+B045,L017,2099-01-20,Purchased Leads - Gen Campaign,35.0,,,,
+B046,L018,2099-02-21,Movoto - Gen Campaign,0.0,,,,
+B047,L019,2099-03-22,Organic - Gen Campaign,0.0,,,,
+B048,L020,2099-04-23,Direct - Gen Campaign,0.0,,,,
+B049,L021,2099-01-24,Google - Gen Campaign,0.0,google,cpc,gen_campaign,GCL-L021
+B050,L022,2099-02-25,Bing - Gen Campaign,0.0,bing,cpc,gen_campaign,GCL-L022
+B051,L023,2099-03-26,Purchased Leads - Gen Campaign,35.0,,,,
+B052,L024,2099-04-12,Movoto - Gen Campaign,0.0,,,,
+B053,L025,2099-01-13,Organic - Gen Campaign,0.0,,,,
+B054,L026,2099-02-14,Direct - Gen Campaign,0.0,,,,
+B055,L027,2099-03-15,Google - Gen Campaign,0.0,google,cpc,gen_campaign,GCL-L027
+B056,L028,2099-04-16,Bing - Gen Campaign,0.0,bing,cpc,gen_campaign,GCL-L028
+B057,L029,2099-01-17,Purchased Leads - Gen Campaign,35.0,,,,
+B058,L030,2099-02-18,Movoto - Gen Campaign,0.0,,,,
+B059,L031,2099-03-19,Organic - Gen Campaign,0.0,,,,
+B060,L032,2099-04-20,Direct - Gen Campaign,0.0,,,,
+B061,L033,2099-01-21,Google - Gen Campaign,0.0,google,cpc,gen_campaign,GCL-L033
+B062,L034,2099-02-22,Bing - Gen Campaign,0.0,bing,cpc,gen_campaign,GCL-L034
+B063,L035,2099-03-23,Purchased Leads - Gen Campaign,35.0,,,,
+B064,L036,2099-04-24,Movoto - Gen Campaign,0.0,,,,
+B065,L037,2099-01-25,Organic - Gen Campaign,0.0,,,,
+B066,L038,2099-02-26,Direct - Gen Campaign,0.0,,,,
+B067,L039,2099-03-12,Google - Gen Campaign,0.0,google,cpc,gen_campaign,GCL-L039
+B068,L040,2099-04-13,Bing - Gen Campaign,0.0,bing,cpc,gen_campaign,GCL-L040

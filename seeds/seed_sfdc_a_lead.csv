@@ -1,0 +1,42 @@
+id,email,first_name,last_name,createddate,status,leadsource,utm_source,utm_medium,utm_campaign,gclid,product_specialty,owner_id
+L001,lead001@example.test,Alice,Anderson,2099-01-10,Converted,Google,google,cpc,brand_purchase,GCL-AAA001,Purchase,U001
+L002,lead002@example.test,Bob,Baker,2099-01-05,Converted,Google,google,cpc,refi_reengage,GCL-BBB002,Refi,U001
+L003,lead003@example.test,Carol,Chen,2099-01-01,Working,Google,google,cpc,always_on_sem,GCL-L003,Refi,U002
+L004,lead004@example.test,David,Davis,2099-01-01,Working,Google,google,cpc,always_on_sem,GCL-L004,Refi,U002
+L005,lead005@example.test,Erin,Ellis,2099-01-01,Working,Google,google,cpc,always_on_sem,GCL-L005,Refi,U002
+L006,lead006@example.test,Frank,Foster,2099-02-01,Working,Bing,bing,cpc,purchase_search,GCL-FFF006,Purchase,U002
+L006B,lead006@example.test,Frank,Foster,2099-02-03,Working,Bing,bing,cpc,purchase_search,GCL-FFF006B,Purchase,U002
+L007,lead007@example.test,Grace,Green,2099-01-15,Working,Aggregator X,,,,,Purchase,U003
+L008,lead008@example.test,Henry,Hughes,2099-02-10,Converted,Purchased Leads,,,,,Purchase,U001
+L009,lead009@example.test,Iris,Ito,2099-01-12,Converted,Google,google,cpc,gen_campaign,GCL-L009,Refi,U001
+L010,lead010@example.test,Jack,Jones,2099-02-13,Working,Bing,bing,cpc,gen_campaign,GCL-L010,Purchase,U002
+L011,lead011@example.test,Karen,Kim,2099-03-14,Closed Lost,Purchased Leads,,,,,Refi,U003
+L012,lead012@example.test,Liam,Lopez,2099-04-15,Converted,Movoto,,,,,Purchase,U001
+L013,lead013@example.test,Mona,Martin,2099-01-16,Working,Organic,,,,,Refi,U002
+L014,lead014@example.test,Noah,Nash,2099-02-17,Closed Lost,Direct,,,,,Purchase,U003
+L015,lead015@example.test,Olive,Owens,2099-03-18,Converted,Google,google,cpc,gen_campaign,GCL-L015,Refi,U001
+L016,lead016@example.test,Paul,Park,2099-04-19,Working,Bing,bing,cpc,gen_campaign,GCL-L016,Purchase,U002
+L017,lead017@example.test,Quinn,Quinn,2099-01-20,Closed Lost,Purchased Leads,,,,,Refi,U003
+L018,lead018@example.test,Rosa,Ruiz,2099-02-21,Converted,Movoto,,,,,Purchase,U001
+L019,lead019@example.test,Sam,Silva,2099-03-22,Working,Organic,,,,,Refi,U002
+L020,lead020@example.test,Tara,Turner,2099-04-23,Closed Lost,Direct,,,,,Purchase,U003
+L021,lead021@example.test,Uma,Underwood,2099-01-24,Converted,Google,google,cpc,gen_campaign,GCL-L021,Refi,U001
+L022,lead022@example.test,Vic,Vance,2099-02-25,Working,Bing,bing,cpc,gen_campaign,GCL-L022,Purchase,U002
+L023,lead023@example.test,Wren,Wells,2099-03-26,Closed Lost,Purchased Leads,,,,,Refi,U003
+L024,lead024@example.test,Xan,Xu,2099-04-12,Converted,Movoto,,,,,Purchase,U001
+L025,lead025@example.test,Yara,Young,2099-01-13,Working,Organic,,,,,Refi,U002
+L026,lead026@example.test,Zane,Zimmer,2099-02-14,Closed Lost,Direct,,,,,Purchase,U003
+L027,lead027@example.test,Amy,Adler,2099-03-15,Converted,Google,google,cpc,gen_campaign,GCL-L027,Refi,U001
+L028,lead028@example.test,Bo,Booth,2099-04-16,Working,Bing,bing,cpc,gen_campaign,GCL-L028,Purchase,U002
+L029,lead029@example.test,Cid,Cortez,2099-01-17,Closed Lost,Purchased Leads,,,,,Refi,U003
+L030,lead030@example.test,Dee,Diaz,2099-02-18,Converted,Movoto,,,,,Purchase,U001
+L031,lead031@example.test,Eli,Evers,2099-03-19,Working,Organic,,,,,Refi,U002
+L032,lead032@example.test,Fay,Fisher,2099-04-20,Closed Lost,Direct,,,,,Purchase,U003
+L033,lead033@example.test,Gus,Grant,2099-01-21,Converted,Google,google,cpc,gen_campaign,GCL-L033,Refi,U001
+L034,lead034@example.test,Hana,Hale,2099-02-22,Working,Bing,bing,cpc,gen_campaign,GCL-L034,Purchase,U002
+L035,lead035@example.test,Ivy,Irwin,2099-03-23,Closed Lost,Purchased Leads,,,,,Refi,U003
+L036,lead036@example.test,Jed,Judd,2099-04-24,Converted,Movoto,,,,,Purchase,U001
+L037,lead037@example.test,Kim,Kerr,2099-01-25,Working,Organic,,,,,Refi,U002
+L038,lead038@example.test,Leo,Lane,2099-02-26,Closed Lost,Direct,,,,,Purchase,U003
+L039,lead039@example.test,Mia,Moss,2099-03-12,Converted,Google,google,cpc,gen_campaign,GCL-L039,Refi,U001
+L040,lead040@example.test,Nia,Neal,2099-04-13,Working,Bing,bing,cpc,gen_campaign,GCL-L040,Purchase,U002

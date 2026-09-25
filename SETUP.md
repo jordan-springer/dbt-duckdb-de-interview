@@ -8,11 +8,11 @@ Detailed instructions to get the dbt + DuckDB lab running on your machine.
 - **pip** or alternative package manager
 - **Optional:** DuckDB CLI for ad-hoc queries (install from [duckdb.org](https://duckdb.org/docs/installation/))
 
-## 1. Install dbt v2 with DuckDB adapter
+## 1. Install dbt with the DuckDB adapter
 
 ### Option A: pip (recommended)
 ```bash
-pip install dbt-core>=2.0.0 dbt-duckdb
+pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 ```
 
 ### Option B: Virtual environment (cleaner isolation)
@@ -22,25 +22,18 @@ source venv/bin/activate  # macOS/Linux
 # venv\Scripts\activate   # Windows CMD
 # venv\Scripts\Activate.ps1  # Windows PowerShell
 
-pip install dbt-core>=2.0.0 dbt-duckdb
+pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 ```
 
 ### Option C: Alternative package managers
 - **macOS Homebrew:** `brew install dbt duckdb` (verify version with `dbt --version`)
 - **Windows winget:** `winget install dbt-labs.dbt-core` (then `pip install dbt-duckdb`)
 
-### If upgrading from dbt Core 1.8 or older `dbt-duckdb`
-Uninstall legacy packages first to avoid conflicts:
-```bash
-pip uninstall dbt-core dbt-duckdb
-pip install dbt-core>=2.0.0 dbt-duckdb
-```
-
 ### Verify installation
 ```bash
 dbt --version
 ```
-Expected output includes `dbt-core: 2.x.x` and `dbt-duckdb: 1.x.x` (or later).
+Expected output includes `dbt-core: 1.x.x` (1.8 or later) and `dbt-duckdb: 1.x.x`.
 
 ## 2. Clone this repository
 ```bash
@@ -118,7 +111,7 @@ Connection:
 | `Profile interview_lab does not exist` | `profiles.yml` not in `~/.dbt/` or `DBT_PROFILES_DIR` | Copy `profiles.yml.example` to the correct location |
 | `Could not find profile named 'interview_lab'` | Wrong working directory or profile name mismatch | Run `dbt debug` from repo root; verify `profile:` in `dbt_project.yml` matches `profiles.yml` |
 | `No module named 'dbt.adapters.duckdb'` | `dbt-duckdb` not installed | `pip install dbt-duckdb` |
-| `Runtime Error: Unrecognized adapter type 'duckdb'` | Using dbt v1.8 or older without separate `dbt-duckdb` package | Upgrade to dbt v2: `pip install --upgrade dbt-core>=2.0.0 dbt-duckdb` |
+| `Runtime Error: Unrecognized adapter type 'duckdb'` | `dbt-duckdb` not installed alongside `dbt-core` | `pip install --upgrade dbt-core dbt-duckdb` |
 
 ## 5. Install dbt packages
 ```bash
@@ -225,7 +218,7 @@ Modify a model and redeploy:
 
 ## You're ready!
 If all of the above passes, you've successfully:
-- ✅ Installed dbt v2 + DuckDB
+- ✅ Installed dbt + DuckDB
 - ✅ Configured profiles
 - ✅ Run deps, seed, run, test
 - ✅ Queried results in DuckDB
@@ -254,5 +247,5 @@ If all of the above passes, you've successfully:
 
 ### Still stuck?
 - Check dbt logs in `logs/dbt.log`
-- Verify `dbt --version` matches requirements (`>=2.0.0`)
+- Verify `dbt --version` matches requirements (`>=1.8.0,<2`)
 - Confirm `profiles.yml` path with `dbt debug --config-dir`

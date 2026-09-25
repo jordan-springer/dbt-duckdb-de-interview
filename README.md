@@ -8,7 +8,7 @@
 
 ## Success criteria
 Before your interview, you must confirm:
-- ✅ dbt v2 installed (`dbt --version` shows `dbt-core>=2.0.0`)
+- ✅ dbt installed (`dbt --version` shows `dbt-core>=1.8.0`)
 - ✅ DuckDB adapter configured (`dbt debug` passes)
 - ✅ Seeds, models, tests run successfully
 - ✅ You can query `data/interview.duckdb` with DuckDB CLI
@@ -18,8 +18,8 @@ Before your interview, you must confirm:
 
 ### macOS / Linux
 ```bash
-# Install dbt v2 with DuckDB adapter
-pip install dbt-core>=2.0.0 dbt-duckdb
+# Install dbt with the DuckDB adapter
+pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 
 # Clone and configure
 git clone https://github.com/jordan-springer/dbt-duckdb-de-interview.git
