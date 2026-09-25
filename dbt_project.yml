@@ -1,0 +1,33 @@
+name: 'interview_lab'
+version: '1.0.0'
+config-version: 2
+
+profile: 'interview_lab'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  interview_lab:
+    staging:
+      +materialized: view
+      +tags:
+        - demo
+    marts:
+      +materialized: table
+      +schema: sfdc
+      +tags:
+        - demo
+
+seeds:
+  interview_lab:
+    +schema: staging
+    +tags:
+      - demo

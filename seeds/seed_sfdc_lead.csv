@@ -1,0 +1,51 @@
+id,email,first_name,last_name,company,title,status,lead_source,created_date,is_converted,converted_date,owner_id
+L001,lead001@example.test,Alice,Anderson,Acme Corp,VP Engineering,Converted,Web,2099-01-10,TRUE,2099-01-25,U001
+L002,lead002@example.test,Bob,Baker,Beta Industries,CTO,Converted,Web,2099-01-10,TRUE,2099-01-28,U001
+L003,lead003@example.test,Carol,Chen,Gamma Systems,Director IT,Working,Web,2099-01-11,FALSE,,U002
+L004,lead004@example.test,David,Davis,Delta Tech,Engineering Manager,Qualified,Web,2099-01-11,FALSE,,U002
+L005,lead005@example.test,Emma,Evans,Epsilon Labs,Senior Engineer,Unqualified,Web,2099-01-12,FALSE,,U001
+L006,lead006@example.test,Frank,Fisher,Zeta Corp,VP Product,Converted,Web,2099-01-12,TRUE,2099-02-05,U001
+L007,lead007@example.test,Grace,Green,Eta Solutions,Product Manager,Open,Web,2099-01-13,FALSE,,U002
+L008,lead008@example.test,Henry,Hill,Theta Co,Tech Lead,Working,Web,2099-01-13,FALSE,,U001
+L009,lead009@example.test,Iris,Ivanov,Iota Inc,Director Analytics,Converted,Web,2099-01-14,TRUE,2099-02-10,U002
+L010,lead010@example.test,Jack,Jones,Kappa Systems,Data Engineer,Qualified,Web,2099-01-14,FALSE,,U001
+L011,lead011@example.test,Kate,Kim,Lambda Tech,Engineering VP,Converted,Web,2099-01-15,TRUE,2099-02-12,U001
+L012,lead012@example.test,Leo,Lopez,Mu Software,CTO,Working,Web,2099-01-15,FALSE,,U002
+L013,lead013@example.test,Maya,Martin,Nu Networks,VP Engineering,Unqualified,Web,2099-01-16,FALSE,,U001
+L014,lead014@example.test,Noah,Nelson,Xi Corp,Director Platform,Converted,Web,2099-01-16,TRUE,2099-02-15,U002
+L015,lead015@example.test,Olivia,Olson,Omicron Labs,Senior Manager,Open,Web,2099-01-17,FALSE,,U001
+L016,lead016@example.test,Paul,Parker,Pi Technologies,VP Data,Converted,Web,2099-01-17,TRUE,2099-02-18,U001
+L017,lead017@example.test,Quinn,Quinn,Rho Systems,Director ML,Working,Web,2099-01-18,FALSE,,U002
+L018,lead018@example.test,Rachel,Roberts,Sigma Inc,Tech Lead,Qualified,Web,2099-01-18,FALSE,,U001
+L019,lead019@example.test,Sam,Smith,Tau Software,Engineering Manager,Unqualified,Web,2099-01-19,FALSE,,U002
+L020,lead020@example.test,Tina,Taylor,Upsilon Co,VP Engineering,Converted,Web,2099-01-19,TRUE,2099-02-22,U001
+L021,lead021@example.test,Uma,Upton,Phi Corp,CTO,Converted,Web,2099-01-20,TRUE,2099-02-25,U002
+L022,lead022@example.test,Victor,Vega,Chi Systems,Director Tech,Working,Web,2099-01-20,FALSE,,U001
+L023,lead023@example.test,Wendy,White,Psi Labs,Senior Architect,Qualified,Web,2099-01-21,FALSE,,U002
+L024,lead024@example.test,Xavier,Xu,Omega Tech,VP Engineering,Converted,Web,2099-01-21,TRUE,2099-02-28,U001
+L025,lead025@example.test,Yara,Yang,Alpha Group,Director Data,Open,Web,2099-01-22,FALSE,,U001
+L026,lead026@example.test,Zoe,Zhang,Beta Labs,Engineering Manager,Working,Web,2099-01-22,FALSE,,U002
+L027,lead027@example.test,Alan,Adams,Gamma Works,Tech Lead,Unqualified,Web,2099-01-23,FALSE,,U001
+L028,lead028@example.test,Beth,Brown,Delta Systems,VP Product,Converted,Web,2099-01-23,TRUE,2099-03-05,U002
+L029,lead029@example.test,Carl,Clark,Epsilon Co,CTO,Qualified,Web,2099-01-24,FALSE,,U001
+L030,lead030@example.test,Diana,Davis,Zeta Labs,Director Platform,Working,Web,2099-01-24,FALSE,,U002
+L031,lead031@example.test,Eric,Edwards,Eta Group,VP Engineering,Converted,Web,2099-01-25,TRUE,2099-03-10,U001
+L032,lead032@example.test,Fiona,Foster,Theta Systems,Senior Engineer,Open,Web,2099-01-25,FALSE,,U002
+L033,lead033@example.test,George,Garcia,Iota Tech,Director Data,Unqualified,Web,2099-01-26,FALSE,,U001
+L034,lead034@example.test,Hannah,Harris,Kappa Works,Engineering Manager,Converted,Web,2099-01-26,TRUE,2099-03-12,U001
+L035,lead035@example.test,Ian,Ingram,Lambda Co,VP Engineering,Working,Web,2099-01-27,FALSE,,U002
+L036,lead036@example.test,Jane,Jackson,Mu Labs,CTO,Qualified,Web,2099-01-27,FALSE,,U001
+L037,lead037@example.test,Kevin,Kelly,Nu Systems,Director ML,Converted,Web,2099-01-28,TRUE,2099-03-15,U002
+L038,lead038@example.test,Laura,Lee,Xi Group,VP Product,Open,Web,2099-01-28,FALSE,,U001
+L039,lead039@example.test,Mike,Moore,Omicron Works,Tech Lead,Working,Web,2099-01-29,FALSE,,U002
+L040,lead040@example.test,Nancy,Nelson,Pi Corp,Director Analytics,Converted,Web,2099-01-29,TRUE,2099-03-18,U001
+L041,lead041@example.test,Oscar,Ortiz,Rho Labs,VP Engineering,Unqualified,Web,2099-01-30,FALSE,,U002
+L042,lead042@example.test,Paula,Perez,Sigma Systems,CTO,Working,Web,2099-01-30,FALSE,,U001
+L043,lead043@example.test,Quincy,Quinn,Tau Co,Engineering Manager,Converted,Web,2099-01-31,TRUE,2099-03-22,U002
+L044,lead044@example.test,Rita,Reyes,Upsilon Tech,Director Platform,Qualified,Web,2099-01-31,FALSE,,U001
+L045,lead045@example.test,Steve,Scott,Phi Labs,VP Data,Open,Web,2099-02-01,FALSE,,U002
+L046,lead046@example.test,Tracy,Turner,Chi Works,Senior Manager,Converted,Web,2099-02-01,TRUE,2099-03-25,U001
+L047,lead047@example.test,Ursula,Upton,Psi Systems,Tech Lead,Working,Web,2099-02-02,FALSE,,U002
+L048,lead048@example.test,Vince,Vance,Omega Labs,Director ML,Unqualified,Web,2099-02-02,FALSE,,U001
+L049,lead049@example.test,Wilma,Wilson,Alpha Tech,VP Engineering,Qualified,Web,2099-02-03,FALSE,,U002
+L050,lead050@example.test,Xander,Xu,Beta Corp,CTO,Converted,Web,2099-02-03,TRUE,2099-03-28,U001

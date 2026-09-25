@@ -1,0 +1,7 @@
+interview_lab:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: data/interview.duckdb
+      threads: 4
