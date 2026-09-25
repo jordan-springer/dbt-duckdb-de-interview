@@ -6,9 +6,54 @@ Detailed instructions to get the dbt + DuckDB lab running on your machine.
 - **Python 3.10+** (check with `python --version` or `python3 --version`)
 - **git** (to clone this repo)
 - **pip** or alternative package manager
-- **Optional:** DuckDB CLI for ad-hoc queries (install from [duckdb.org](https://duckdb.org/docs/installation/))
+- **DuckDB CLI** (the `duckdb` binary for ad-hoc queries — see installation below)
 
-## 1. Install dbt with the DuckDB adapter
+## 1. Install DuckDB CLI
+
+**Important:** The DuckDB CLI is a standalone binary used to run ad-hoc SQL queries against `data/interview.duckdb`. Installing the Python adapter (`dbt-duckdb`) does **not** install the CLI.
+
+### macOS
+```bash
+brew install duckdb
+```
+
+### Linux
+**Official install script (recommended):**
+```bash
+curl -L https://github.com/duckdb/duckdb/releases/latest/download/duckdb_cli-linux-amd64.zip -o duckdb_cli.zip
+unzip duckdb_cli.zip
+sudo mv duckdb /usr/local/bin/
+chmod +x /usr/local/bin/duckdb
+```
+
+**Or via package manager (if available):**
+```bash
+# Ubuntu/Debian (if packaged)
+sudo apt install duckdb
+
+# Or download binary from https://duckdb.org/docs/installation/
+```
+
+### Windows
+**Option A: winget (recommended)**
+```cmd
+winget install DuckDB.cli
+```
+
+**Option B: Official installer**
+1. Download the Windows CLI binary from [duckdb.org/docs/installation/](https://duckdb.org/docs/installation/)
+2. Extract `duckdb.exe`
+3. Add to PATH or place in your project directory
+
+### Verify installation
+```bash
+duckdb --version
+```
+Expected output: `v1.x.x` or similar.
+
+## 2. Install dbt with the DuckDB adapter
+
+**Note:** This installs the Python adapter that allows dbt to work with DuckDB. It does **not** install the DuckDB CLI binary covered in step 1.
 
 ### Option A: pip (recommended)
 ```bash
@@ -35,13 +80,13 @@ dbt --version
 ```
 Expected output includes `dbt-core: 1.x.x` (1.8 or later) and `dbt-duckdb: 1.x.x`.
 
-## 2. Clone this repository
+## 3. Clone this repository
 ```bash
 git clone https://github.com/jordan-springer/dbt-duckdb-de-interview.git
 cd dbt-duckdb-de-interview
 ```
 
-## 3. Configure profiles.yml
+## 4. Configure profiles.yml
 
 dbt requires a `profiles.yml` file to connect to your warehouse (here: a local DuckDB file).
 
@@ -83,7 +128,7 @@ Then rename the example file:
 cp profiles.yml.example profiles.yml  # or rename on Windows
 ```
 
-## 4. Verify dbt connection
+## 5. Verify dbt connection
 ```bash
 dbt debug
 ```
@@ -113,13 +158,13 @@ Connection:
 | `No module named 'dbt.adapters.duckdb'` | `dbt-duckdb` not installed | `pip install dbt-duckdb` |
 | `Runtime Error: Unrecognized adapter type 'duckdb'` | `dbt-duckdb` not installed alongside `dbt-core` | `pip install --upgrade dbt-core dbt-duckdb` |
 
-## 5. Install dbt packages
+## 6. Install dbt packages
 ```bash
 dbt deps
 ```
 This installs `dbt_utils` from `packages.yml`.
 
-## 6. Load seed data
+## 7. Load seed data
 ```bash
 dbt seed
 ```
@@ -128,7 +173,7 @@ Loads 3 CSV files into `data/interview.duckdb`:
 - `seed_sfdc_campaign` (2 campaigns)
 - `seed_sfdc_campaign_member` (50 campaign members with A/B variants)
 
-## 7. Run models
+## 8. Run models
 ```bash
 dbt run
 ```
@@ -142,7 +187,7 @@ Completed successfully
 Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
 ```
 
-## 8. Run tests
+## 9. Run tests
 ```bash
 dbt test
 ```
@@ -158,12 +203,9 @@ Done. PASS=15 WARN=0 ERROR=0 SKIP=0 TOTAL=15
 ```
 (Exact count may vary depending on test definitions.)
 
-## 9. Verify with DuckDB CLI
+## 10. Verify with DuckDB CLI
 
-### Install DuckDB CLI (if not already installed)
-- **macOS:** `brew install duckdb`
-- **Linux:** Download from [duckdb.org](https://duckdb.org/docs/installation/)
-- **Windows:** `winget install DuckDB.cli` or download binary
+Now use the DuckDB CLI (installed in step 1) to query the warehouse directly.
 
 ### Query the warehouse
 ```bash
@@ -204,7 +246,7 @@ If tables are in a different schema, check `dbt_project.yml` `+schema:` config.
 | `Table 'main_sfdc.dim_leads' not found` | Schema config issue; try `SHOW ALL TABLES;` and use the actual schema prefix |
 | DuckDB CLI not found | Install from [duckdb.org](https://duckdb.org/docs/installation/) or use Python: `python -c "import duckdb; duckdb.connect('data/interview.duckdb')"` |
 
-## 10. Test incremental workflow
+## 11. Test incremental workflow
 Modify a model and redeploy:
 
 1. Edit `models/marts/sfdc/mart_ab_lead_performance.sql` (e.g., change column alias)
@@ -218,10 +260,11 @@ Modify a model and redeploy:
 
 ## You're ready!
 If all of the above passes, you've successfully:
-- ✅ Installed dbt + DuckDB
+- ✅ Installed DuckDB CLI (the `duckdb` binary)
+- ✅ Installed dbt-core + dbt-duckdb adapter
 - ✅ Configured profiles
 - ✅ Run deps, seed, run, test
-- ✅ Queried results in DuckDB
+- ✅ Queried results with the DuckDB CLI
 - ✅ Executed a selective model rebuild
 
 **Next:** Review [DURING_INTERVIEW.md](DURING_INTERVIEW.md) for what to expect in the live coding session.

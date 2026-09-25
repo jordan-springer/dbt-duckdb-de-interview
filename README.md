@@ -8,16 +8,21 @@
 
 ## Success criteria
 Before your interview, you must confirm:
-- ✅ dbt installed (`dbt --version` shows `dbt-core>=1.8.0`)
+- ✅ **DuckDB CLI installed** (`duckdb --version` works — this is the standalone binary, not just the Python adapter)
+- ✅ **dbt-core + dbt-duckdb installed** (`dbt --version` shows `dbt-core>=1.8.0`)
 - ✅ DuckDB adapter configured (`dbt debug` passes)
 - ✅ Seeds, models, tests run successfully
-- ✅ You can query `data/interview.duckdb` with DuckDB CLI
+- ✅ You can query `data/interview.duckdb` directly with the DuckDB CLI
 - ✅ You can modify a model and redeploy with `dbt run --select ...`
 
 ## Quickstart
 
 ### macOS / Linux
 ```bash
+# Install DuckDB CLI (the standalone binary)
+brew install duckdb  # macOS
+# Linux: see SETUP.md for install script
+
 # Install dbt with the DuckDB adapter
 pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 
@@ -31,10 +36,21 @@ dbt deps
 dbt seed
 dbt run
 dbt test
+
+# Verify with DuckDB CLI
+duckdb data/interview.duckdb
 ```
 
 ### Windows
-See **[SETUP.md](SETUP.md)** for detailed Windows instructions (CMD vs PowerShell, profile paths).
+```cmd
+# Install DuckDB CLI
+winget install DuckDB.cli
+
+# Install dbt (then see SETUP.md for detailed profile configuration)
+pip install "dbt-core>=1.8.0,<2" dbt-duckdb
+```
+
+See **[SETUP.md](SETUP.md)** for detailed Windows instructions (CMD vs PowerShell, profile paths) and troubleshooting.
 
 ## What's included
 - **Staging models:** Clean Salesforce-style `lead`, `campaign`, `campaign_member` seeds
