@@ -260,13 +260,6 @@ SELECT * FROM main_sfdc.dim_leads LIMIT 5;
 SELECT * FROM main_sfdc.mart_ab_lead_performance;
 ```
 
-### Expected A/B results
-You should see 2 rows (variants A and B) with different conversion rates:
-- **Variant A:** ~40% conversion rate
-- **Variant B:** ~50% conversion rate
-
-(Exact numbers depend on seed logic, but B should outperform A.)
-
 ### Schema naming note
 DuckDB uses `main_<schema>` prefixes by default. If you see `main_sfdc.*` tables, that's correct.  
 If tables are in a different schema, check `dbt_project.yml` `+schema:` config.

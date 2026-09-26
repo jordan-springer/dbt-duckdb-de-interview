@@ -87,8 +87,6 @@ GROUP BY status
 ORDER BY converted DESC;
 ```
 
-Expected: 50 leads, 2 campaigns, ~40 A/B test members, conversion rate difference between variants A and B.
-
 ## What to do during the interview
 See **[DURING_INTERVIEW.md](DURING_INTERVIEW.md)** for workflow guidance.
 
