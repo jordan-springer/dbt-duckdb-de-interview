@@ -63,8 +63,9 @@ dbt test
 ## Dataset details (for reference)
 - **50 leads** across various companies (fake emails `lead001@example.test`, etc.)
 - **2 campaigns:** Spring Email Subject Test (A/B) and Q1 Webinar Series (no A/B)
-- **A/B test:** `spring_email_subject_2099` with variants A and B
-- **Conversion rates:** Variant B should outperform Variant A (~50% vs ~40%)
+- **A/B test:** `spring_email_subject_2099` with variants A and B (40 total members: 20 per variant)
+- **Conversion rates:** Variant A: 40% (8/20), Variant B: 35% (7/20) — note that A outperforms B in this dataset
+- **Response rates:** Variant A: 50% (10/20), Variant B: 55% (11/20) — B has slightly higher response but lower conversion
 - **Dates:** All in 2099 (obviously fake)
 
 ## No solution key
