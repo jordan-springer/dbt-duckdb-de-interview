@@ -20,7 +20,7 @@ The DuckDB file *is* your warehouse. When you run `dbt run`, you're deploying to
    duckdb data/interview.duckdb
    ```
    ```sql
-   SELECT * FROM main_sfdc.your_model_name LIMIT 10;
+   SELECT * FROM sfdc.your_model_name LIMIT 10;
    ```
 4. **Run tests** (if modifying constraints):
    ```bash
@@ -80,31 +80,21 @@ SHOW SCHEMAS;
 SHOW ALL TABLES;
 
 -- Inspect a model's output
-SELECT * FROM main_sfdc.dim_leads LIMIT 10;
+SELECT * FROM sfdc.dim_leads LIMIT 10;
 
 -- Check row counts
-SELECT COUNT(*) FROM main_sfdc.fct_campaign_members;
+SELECT COUNT(*) FROM sfdc.fct_campaign_members;
 
--- A/B performance summary (pre-built mart)
-SELECT * FROM main_sfdc.mart_ab_lead_performance;
-
--- Ad-hoc analysis: conversion rates by lead source
-SELECT 
-    lead_source,
-    COUNT(*) as total_leads,
-    SUM(is_converted::int) as converted,
-    ROUND(100.0 * SUM(is_converted::int) / COUNT(*), 2) as conversion_rate_pct
-FROM main_sfdc.dim_leads
-GROUP BY lead_source;
+-- Sample mart data
+SELECT * FROM sfdc.mart_ab_lead_performance LIMIT 5;
 
 -- Exit DuckDB
 .quit
 ```
 
 ### Schema note
-DuckDB materializes custom schemas as `main_<schema_name>`.  
-In this project, marts use schema `sfdc`, so tables appear as `main_sfdc.*` in DuckDB.  
-If you see `main_sfdc.dim_leads` instead of `sfdc.dim_leads`, that's expected.
+With the custom `generate_schema_name` macro, DuckDB uses clean schema names: `edw` for staging models and seeds, `sfdc` for marts.  
+No `main_*` prefixes — tables appear as `edw.stg_sfdc__leads` and `sfdc.dim_leads`.
 
 ## Etiquette & best practices
 - **Ask clarifying questions** — If a requirement is ambiguous, ask before coding.
@@ -125,8 +115,8 @@ If you're unfamiliar with git, mention that upfront — it's not a dealbreaker.
 
 ## Common pitfalls to avoid
 - **Forgetting to run `dbt run` after editing SQL** — Changes don't take effect until you materialize them.
-- **Querying the wrong schema** — Check `SHOW ALL TABLES;` to confirm schema names (`main_sfdc.*` vs `sfdc.*`).
-- **Hardcoding table names** — Use `{{ ref('stg_sfdc__leads') }}` instead of `FROM staging.seed_sfdc_lead`.
+- **Querying the wrong schema** — Check `SHOW ALL TABLES;` to confirm schema names (`edw.*` for staging, `sfdc.*` for marts).
+- **Hardcoding table names** — Use `{{ ref('stg_sfdc__leads') }}` instead of `FROM edw.seed_sfdc_lead`.
 - **Not checking dbt logs** — If a model fails, read the error message in the terminal output.
 - **Overthinking** — Start simple, validate, then iterate.
 
@@ -138,7 +128,7 @@ You might be asked something like:
 1. Create `models/marts/sfdc/mart_campaign_summary.sql`
 2. Write SQL using `{{ ref('fct_campaign_members') }}`
 3. Run: `dbt run --select mart_campaign_summary`
-4. Verify: `SELECT * FROM main_sfdc.mart_campaign_summary;` in DuckDB
+4. Verify: `SELECT * FROM sfdc.mart_campaign_summary;` in DuckDB
 5. Add tests in `models/marts/sfdc/marts_sfdc.yml` (if requested)
 6. Run: `dbt test --select mart_campaign_summary`
 

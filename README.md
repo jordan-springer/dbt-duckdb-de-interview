@@ -62,7 +62,7 @@ See **[SETUP.md](SETUP.md)** for detailed Windows instructions (CMD vs PowerShel
 ## What's included
 - **Staging models:** Clean Salesforce-style `lead`, `campaign`, `campaign_member` seeds
 - **Marts:** Dimensions, fact table, and an A/B experiment performance summary
-- **Custom schema:** Marts land in `main_sfdc` (DuckDB) or `sfdc` (depending on config)
+- **Custom schemas:** Staging models and seeds land in `edw`, marts land in `sfdc`
 - **Tests:** Schema constraints, accepted values, foreign keys
 
 ## Verification queries
@@ -77,14 +77,9 @@ duckdb data/interview.duckdb
 SHOW SCHEMAS;
 SHOW ALL TABLES;
 
--- Sample A/B performance (Variant A vs B conversion rates)
-SELECT * FROM main_sfdc.mart_ab_lead_performance;
-
--- Lead conversion metrics
-SELECT status, COUNT(*) as ct, SUM(is_converted::int) as converted
-FROM main_sfdc.dim_leads
-GROUP BY status
-ORDER BY converted DESC;
+-- Verify models materialized
+SELECT COUNT(*) FROM sfdc.dim_leads;
+SELECT COUNT(*) FROM edw.stg_sfdc__leads;
 ```
 
 ## What to do during the interview
