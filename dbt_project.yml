@@ -18,6 +18,7 @@ models:
   interview_lab:
     staging:
       +materialized: view
+      +schema: edw
       +tags:
         - demo
     marts:
@@ -28,6 +29,6 @@ models:
 
 seeds:
   interview_lab:
-    +schema: staging
+    +schema: edw
     +tags:
       - demo

@@ -211,8 +211,8 @@ Loads 3 CSV files into `data/interview.duckdb`:
 dbt run
 ```
 Builds:
-- **Staging views:** `stg_sfdc__leads`, `stg_sfdc__campaigns`, `stg_sfdc__campaign_members`
-- **Mart tables** (schema `sfdc`): `dim_leads`, `dim_campaigns`, `fct_campaign_members`, `mart_ab_lead_performance`
+- **Staging views:** `stg_sfdc__leads`, `stg_sfdc__campaigns`, `stg_sfdc__campaign_members` (in `edw` schema)
+- **Mart tables** (in `sfdc` schema): `dim_leads`, `dim_campaigns`, `fct_campaign_members`, `mart_ab_lead_performance`
 
 ### Expected output
 ```
@@ -250,26 +250,26 @@ duckdb data/interview.duckdb
 -- List schemas
 SHOW SCHEMAS;
 
--- List all tables (note custom schema names)
+-- List all tables
 SHOW ALL TABLES;
 
 -- Sample data
-SELECT * FROM main_sfdc.dim_leads LIMIT 5;
+SELECT * FROM sfdc.dim_leads LIMIT 5;
 
 -- A/B performance (key output)
-SELECT * FROM main_sfdc.mart_ab_lead_performance;
+SELECT * FROM sfdc.mart_ab_lead_performance;
 ```
 
 ### Schema naming note
-DuckDB uses `main_<schema>` prefixes by default. If you see `main_sfdc.*` tables, that's correct.  
-If tables are in a different schema, check `dbt_project.yml` `+schema:` config.
+With the custom `generate_schema_name` macro, DuckDB uses clean schema names: `edw` for staging models and seeds, `sfdc` for marts.  
+No `main_*` prefixes — tables appear as `edw.stg_sfdc__leads` and `sfdc.dim_leads`.
 
 ### Common query failures
 
 | Issue | Fix |
 |-------|-----|
-| `SHOW ALL TABLES;` returns empty or only `staging.*` tables | Run `dbt run` again; check for errors in model builds |
-| `Table 'main_sfdc.dim_leads' not found` | Schema config issue; try `SHOW ALL TABLES;` and use the actual schema prefix |
+| `SHOW ALL TABLES;` returns empty or only staging tables | Run `dbt run` again; check for errors in model builds |
+| `Table 'sfdc.dim_leads' not found` | Verify schemas with `SHOW SCHEMAS;` and use the actual schema prefix |
 | DuckDB CLI not found | Install from [duckdb.org](https://duckdb.org/docs/installation/) or use Python: `python -c "import duckdb; duckdb.connect('data/interview.duckdb')"` |
 
 ## 12. Test incremental workflow
