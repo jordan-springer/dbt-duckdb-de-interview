@@ -85,17 +85,8 @@ SELECT * FROM sfdc.dim_leads LIMIT 10;
 -- Check row counts
 SELECT COUNT(*) FROM sfdc.fct_campaign_members;
 
--- A/B performance summary (pre-built mart)
-SELECT * FROM sfdc.mart_ab_lead_performance;
-
--- Ad-hoc analysis: conversion rates by lead source
-SELECT 
-    lead_source,
-    COUNT(*) as total_leads,
-    SUM(is_converted::int) as converted,
-    ROUND(100.0 * SUM(is_converted::int) / COUNT(*), 2) as conversion_rate_pct
-FROM sfdc.dim_leads
-GROUP BY lead_source;
+-- Sample mart data
+SELECT * FROM sfdc.mart_ab_lead_performance LIMIT 5;
 
 -- Exit DuckDB
 .quit

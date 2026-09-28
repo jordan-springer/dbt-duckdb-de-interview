@@ -77,14 +77,9 @@ duckdb data/interview.duckdb
 SHOW SCHEMAS;
 SHOW ALL TABLES;
 
--- Sample A/B performance (Variant A vs B conversion rates)
-SELECT * FROM sfdc.mart_ab_lead_performance;
-
--- Lead conversion metrics
-SELECT status, COUNT(*) as ct, SUM(is_converted::int) as converted
-FROM sfdc.dim_leads
-GROUP BY status
-ORDER BY converted DESC;
+-- Verify models materialized
+SELECT COUNT(*) FROM sfdc.dim_leads;
+SELECT COUNT(*) FROM edw.stg_sfdc__leads;
 ```
 
 ## What to do during the interview

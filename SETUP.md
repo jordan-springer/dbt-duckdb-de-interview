@@ -256,8 +256,8 @@ SHOW ALL TABLES;
 -- Sample data
 SELECT * FROM sfdc.dim_leads LIMIT 5;
 
--- A/B performance (key output)
-SELECT * FROM sfdc.mart_ab_lead_performance;
+-- Verify mart tables exist
+SELECT * FROM sfdc.mart_ab_lead_performance LIMIT 5;
 ```
 
 ### Schema naming note
