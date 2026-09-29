@@ -82,9 +82,6 @@ SELECT COUNT(*) FROM sfdc.dim_leads;
 SELECT COUNT(*) FROM edw.stg_sfdc__leads;
 ```
 
-## What to do during the interview
-See **[DURING_INTERVIEW.md](DURING_INTERVIEW.md)** for workflow guidance.
-
 ## Detailed setup guide
 See **[SETUP.md](SETUP.md)** for troubleshooting, common errors, and platform-specific notes.
 
