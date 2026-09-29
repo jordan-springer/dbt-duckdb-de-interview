@@ -293,7 +293,7 @@ If all of the above passes, you've successfully:
 - ✅ Queried results with the DuckDB CLI
 - ✅ Executed a selective model rebuild
 
-**Next:** Review [DURING_INTERVIEW.md](DURING_INTERVIEW.md) for what to expect in the live coding session.
+**Ready:** If everything above passes, bring that working environment to the live session.
 
 ---
 
