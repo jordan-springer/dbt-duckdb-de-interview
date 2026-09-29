@@ -8,6 +8,7 @@
 
 ## Success criteria
 Before your interview, you must confirm:
+- ✅ **Python 3.10+** (`python3 --version` — **3.9 caps you on deprecated dbt-core 1.10**)
 - ✅ **DuckDB CLI installed** (`duckdb --version` works — this is the standalone binary, not just the Python adapter)
 - ✅ **dbt installed** (`dbt --version` shows `dbt-core` **1.8–1.x** — pin `<2`; we verify on 1.10+/1.12)
 - ✅ DuckDB adapter configured (`dbt debug` passes)
@@ -23,12 +24,11 @@ Before your interview, you must confirm:
 brew install duckdb  # macOS
 # Linux: see SETUP.md for install script
 
-# Install dbt Core 1.x + DuckDB adapter (do not use dbt 2.x for this lab)
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
-
-# Clone and configure
+# Clone and configure (Python 3.10+ required)
 git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
 cd senior-de-technical-interview-setup
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt   # dbt-core>=1.8,<2 + dbt-duckdb (do not use dbt 2.x)
 mkdir -p ~/.dbt
 cp profiles.yml.example ~/.dbt/profiles.yml
 
@@ -47,12 +47,12 @@ duckdb data/interview.duckdb
 # Install DuckDB CLI
 winget install DuckDB.cli
 
-# Install dbt (then see SETUP.md for detailed profile configuration)
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
-
-# Clone, then create ~/.dbt before copying the profile
+# Clone, then install (Python 3.10+ required; see SETUP.md for details)
 git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
 cd senior-de-technical-interview-setup
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 mkdir %USERPROFILE%\.dbt
 copy profiles.yml.example %USERPROFILE%\.dbt\profiles.yml
 ```

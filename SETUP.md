@@ -3,7 +3,7 @@
 Detailed instructions to get the dbt + DuckDB lab running on your machine.
 
 ## Prerequisites
-- **Python 3.10+** (check with `python --version` or `python3 --version`)
+- **Python 3.10+** (check with `python3 --version`). **Python 3.9 is not enough** — pip will silently resolve to deprecated **dbt-core 1.10.x** (and an older duckdb adapter), which triggers upgrade/deprecation warnings. Use 3.10, 3.11, or 3.12.
 - **git** (to clone this repo)
 - **pip** or alternative package manager
 - **DuckDB CLI** (the `duckdb` binary for ad-hoc queries — see installation below)
@@ -58,20 +58,22 @@ Expected output: `v1.x.x` or similar.
 - Do **not** install dbt 2.x for this interview setup
 - The DuckDB CLI binary (step 1) is still required separately from the Python adapter
 
-### Option A: pip (recommended)
+### Option A: pip from `requirements.txt` (recommended)
+From the **repo root** after clone (keeps the Core `<2` pin in one place):
 ```bash
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
+pip install -r requirements.txt
 ```
+Equivalent: `pip install "dbt-core>=1.8.0,<2" "dbt-duckdb>=1.8.0,<2"`
 
 ### Option B: Virtual environment (cleaner isolation)
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # macOS/Linux
-# venv\Scripts\activate   # Windows CMD
-# venv\Scripts\Activate.ps1  # Windows PowerShell
+# Prefer an explicit 3.10+ interpreter (python3.10 / python3.11 / python3.12)
+python3 -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+# .venv\Scripts\activate   # Windows CMD
+# .venv\Scripts\Activate.ps1  # Windows PowerShell
 
-# Then install dbt Core 1.x + adapter
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
+pip install -r requirements.txt
 ```
 
 ### Option C: Alternative package managers
@@ -184,6 +186,7 @@ Connection:
 | `No module named 'dbt.adapters.duckdb'` | `dbt-duckdb` not installed | `pip install dbt-duckdb` |
 | `Runtime Error: Unrecognized adapter type 'duckdb'` | `dbt-duckdb` not installed alongside `dbt-core` | `pip install --upgrade "dbt-core>=1.8.0,<2" dbt-duckdb` |
 | `dbt-core` shows 2.x | Accidental dbt 2 install | `pip install "dbt-core>=1.8.0,<2" dbt-duckdb` (recreate the venv if needed) |
+| `dbt-core` 1.10.x + “deprecated” / plugin out-of-date | Python **3.9** (or older) venv — 1.12+ needs ≥3.10 | Recreate venv with Python **3.10+**, then `pip install -r requirements.txt` |
 
 ## 7. Install dbt packages
 ```bash
