@@ -9,7 +9,7 @@
 ## Success criteria
 Before your interview, you must confirm:
 - ✅ **DuckDB CLI installed** (`duckdb --version` works — this is the standalone binary, not just the Python adapter)
-- ✅ **dbt installed** (`dbt --version` shows `dbt-core>=1.8.0` — both dbt 1.8-1.9.x and 2.x work)
+- ✅ **dbt installed** (`dbt --version` shows `dbt-core>=1.8.0` — 1.8–1.9.x and 2.x supported; we verify on 1.10+/1.12 and 2.x)
 - ✅ DuckDB adapter configured (`dbt debug` passes)
 - ✅ Seeds, models, tests run successfully
 - ✅ You can query `data/interview.duckdb` directly with the DuckDB CLI

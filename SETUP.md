@@ -316,6 +316,6 @@ If all of the above passes, you've successfully:
 
 ### Still stuck?
 - Check dbt logs in `logs/dbt.log`
-- Verify `dbt --version` shows `>=1.8.0` (dbt 1.8+ or 2.x both work)
+- Verify `dbt --version` shows `>=1.8.0` (1.8–1.9.x and 2.x supported; we verify on 1.10+/1.12 and 2.x)
 - Confirm `profiles.yml` path with `dbt debug --config-dir`
 - If using dbt 2.x, adapter type will show as `duckdb (remote)` (built-in support)

@@ -29,8 +29,7 @@ models:
         description: Lead status
         data_tests:
           - accepted_values:
-              arguments:
-                values: ['Open', 'Working', 'Qualified', 'Unqualified', 'Converted']
+              values: ['Open', 'Working', 'Qualified', 'Unqualified', 'Converted']
       - name: is_converted
         description: Whether the lead has been converted
         data_tests:
