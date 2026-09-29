@@ -198,38 +198,39 @@ This installs `dbt_utils` from `packages.yml`.
 ```bash
 dbt seed
 ```
-Loads 3 CSV files into `data/interview.duckdb`:
-- `seed_sfdc_lead` (50 fake leads)
-- `seed_sfdc_campaign` (2 campaigns)
-- `seed_sfdc_campaign_member` (50 campaign members with A/B variants)
+Loads seed CSVs into `data/interview.duckdb`:
+- `seed_sfdc_a_lead` (a-lead / LEAD — customer grain)
+- `seed_sfdc_b_lead` (b-lead / BLEAD__C — form submissions)
+- `seed_loan_milestones` (funnel events)
+- `seed_marketing_spend` (campaign × date spend)
 
 ## 9. Run models
 ```bash
 dbt run
 ```
 Builds:
-- **Staging views** (schema `main`): `stg_sfdc__leads`, `stg_sfdc__campaigns`, `stg_sfdc__campaign_members`
-- **Mart tables** (schema `main`): `dim_leads`, `dim_campaigns`, `fct_campaign_members`, `mart_ab_lead_performance`
+- **Staging views** (schema `main`): `stg_sfdc__a_leads`, `stg_sfdc__b_leads`, `stg_loan_milestones`, `stg_marketing_spend`
+- **Mart tables** (schema `main`): `dim_lead`, `fact_conversion_transaction`, `fact_marketing_spend`
 
 ### Expected output
 ```
 Completed successfully
-Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
+Done. PASS=N WARN=0 ERROR=0 SKIP=0 TOTAL=N
 ```
+(Exact model count depends on staging + marts present.)
 
 ## 10. Run tests
 ```bash
 dbt test
 ```
 Validates:
-- Unique/not_null constraints
-- Accepted values for `status`, `variant`
-- Referential integrity
+- Unique/not_null constraints on mart and staging keys
+- Accepted values for a-lead `status`, milestone types, spend `channel`
 
 ### Expected output
 ```
 Completed successfully
-Done. PASS=15 WARN=0 ERROR=0 SKIP=0 TOTAL=15
+Done. PASS=N WARN=0 ERROR=0 SKIP=0 TOTAL=N
 ```
 (Exact count may vary depending on test definitions.)
 
@@ -251,30 +252,29 @@ SHOW SCHEMAS;
 SHOW ALL TABLES;
 
 -- Sample data
-SELECT * FROM dim_leads LIMIT 5;
-
--- Verify mart tables exist
-SELECT * FROM mart_ab_lead_performance LIMIT 5;
+SELECT * FROM dim_lead LIMIT 5;
+SELECT * FROM fact_conversion_transaction LIMIT 5;
+SELECT * FROM fact_marketing_spend LIMIT 5;
 ```
 
 ### Schema naming note
-All seeds and models materialize in DuckDB’s default schema **`main`**. Query them unqualified (`dim_leads`) or as `main.dim_leads`.
+All seeds and models materialize in DuckDB’s default schema **`main`**. Query them unqualified (`dim_lead`) or as `main.dim_lead`.
 
 ### Common query failures
 
 | Issue | Fix |
 |-------|-----|
 | `SHOW ALL TABLES;` returns empty or only staging tables | Run `dbt run` again; check for errors in model builds |
-| `Table 'dim_leads' not found` | Confirm you are connected to `data/interview.duckdb` and re-run `dbt run`; check `SHOW TABLES;` |
+| `Table 'dim_lead' not found` | Confirm you are connected to `data/interview.duckdb` and re-run `dbt run`; check `SHOW TABLES;` |
 | DuckDB CLI not found | Install from [duckdb.org](https://duckdb.org/docs/installation/) or use Python: `python -c "import duckdb; duckdb.connect('data/interview.duckdb')"` |
 
 ## 12. Test incremental workflow
 Modify a model and redeploy:
 
-1. Edit `models/marts/sfdc/mart_ab_lead_performance.sql` (e.g., change column alias)
+1. Edit `models/marts/dim_lead.sql` (e.g., add a column alias)
 2. Run only that model:
    ```bash
-   dbt run --select mart_ab_lead_performance
+   dbt run --select dim_lead
    ```
 3. Query in DuckDB to confirm changes
 

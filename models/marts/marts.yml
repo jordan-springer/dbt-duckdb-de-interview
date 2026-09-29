@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: dim_lead
+    description: Customer-grain dimension built from LEAD (a-lead). Anchor for lead reporting.
+    columns:
+      - name: lead_id
+        description: Unique customer / a-lead identifier
+        data_tests:
+          - unique
+          - not_null
+      - name: email
+        description: Lead email address
+        data_tests:
+          - not_null
+      - name: status
+        description: Current a-lead status
+        data_tests:
+          - accepted_values:
+              values: ['Working', 'Converted', 'Closed Lost']
+      - name: created_date
+        description: First-touch CreatedDate on the a-lead (not overwritten on resubmission)
+        data_tests:
+          - not_null
+
+  - name: fact_conversion_transaction
+    description: One row per funnel milestone (lead, contact, opportunity, application, funded). Keyed on lead_id.
+    columns:
+      - name: conversion_transaction_id
+        description: Surrogate key for the milestone event
+        data_tests:
+          - unique
+          - not_null
+      - name: lead_id
+        description: FK to dim_lead
+        data_tests:
+          - not_null
+      - name: milestone_type
+        description: Funnel milestone type
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['lead', 'contact', 'opportunity', 'application', 'funded']
+      - name: milestone_timestamp
+        description: Event timestamp
+        data_tests:
+          - not_null
+
+  - name: fact_marketing_spend
+    description: Marketing spend at campaign × date grain (purchased-lead cost + paid search spend).
+    columns:
+      - name: marketing_spend_id
+        description: Surrogate key for campaign × date
+        data_tests:
+          - unique
+          - not_null
+      - name: spend_date
+        description: Spend date
+        data_tests:
+          - not_null
+      - name: campaign
+        description: Campaign name
+        data_tests:
+          - not_null
+      - name: channel
+        description: Marketing channel
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['Google', 'Bing', 'Purchased Leads']
+      - name: cost
+        description: Spend amount for that campaign on that date
+        data_tests:
+          - not_null
