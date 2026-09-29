@@ -1,6 +1,18 @@
 version: 2
 
 models:
+  - name: stg_sfdc__lead_history
+    description: Staging model for Salesforce lead field history (union of history seeds)
+    columns:
+      - name: lead_id
+        description: Lead identifier
+        data_tests:
+          - not_null
+      - name: valid_from
+        description: Effective start timestamp for this history row
+        data_tests:
+          - not_null
+
   - name: stg_sfdc__leads
     description: Staging model for Salesforce leads
     columns:
