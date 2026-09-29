@@ -54,17 +54,11 @@ Expected output: `v1.x.x` or similar.
 ## 2. Install dbt with the DuckDB adapter
 
 **Important distinction:**
-- **dbt 2.x** has DuckDB support built-in (adapter type: `duckdb (remote)`)
-- **dbt 1.8-1.9.x** requires the separate `dbt-duckdb` package
-- This lab works with both versions. The CLI binary (step 1) is still required in both cases.
+- This lab requires **dbt Core 1.8–1.x** (`<2`) plus the **`dbt-duckdb`** adapter
+- Do **not** install dbt 2.x for this interview setup
+- The DuckDB CLI binary (step 1) is still required separately from the Python adapter
 
 ### Option A: pip (recommended)
-**For dbt 2.x (built-in DuckDB):**
-```bash
-pip install "dbt-core>=2.0.0"
-```
-
-**For dbt 1.8-1.9.x (requires adapter):**
 ```bash
 pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 ```
@@ -76,20 +70,19 @@ source venv/bin/activate  # macOS/Linux
 # venv\Scripts\activate   # Windows CMD
 # venv\Scripts\Activate.ps1  # Windows PowerShell
 
-# Then install dbt as above (2.x or 1.8-1.9.x)
-pip install "dbt-core>=1.8.0" dbt-duckdb
+# Then install dbt Core 1.x + adapter
+pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 ```
 
 ### Option C: Alternative package managers
-- **macOS Homebrew:** `brew install dbt` (verify version with `dbt --version`)
-- **Windows winget:** `winget install dbt-labs.dbt-core` (then `pip install dbt-duckdb` if using 1.8-1.9.x)
+- **macOS Homebrew:** `brew install dbt` — confirm `dbt --version` is **1.x** (`<2`); if brew gives 2.x, use the pip pin above in a venv instead
+- **Windows winget:** `winget install dbt-labs.dbt-core` — confirm `dbt --version` is **1.x**, then `pip install "dbt-core>=1.8.0,<2" dbt-duckdb` if needed
 
 ### Verify installation
 ```bash
 dbt --version
 ```
-**Expected output for dbt 2.x:** `dbt-core: 2.x.x` (adapter type will be `duckdb (remote)`)  
-**Expected output for dbt 1.8-1.9.x:** `dbt-core: 1.x.x` and `dbt-duckdb: 1.x.x`
+**Expected:** `dbt-core: 1.x.x` (must be `<2`) and `dbt-duckdb: 1.x.x`
 
 ## 3. Clone this repository
 ```bash
@@ -188,8 +181,9 @@ Connection:
 | `IO Error: Cannot open file "...data/interview.duckdb": No such file or directory` | `data/` directory doesn't exist | Run `mkdir -p data` (or `mkdir data` on Windows), or pull latest with `data/.gitkeep` |
 | `Profile interview_lab does not exist` | `profiles.yml` not in `~/.dbt/` or `DBT_PROFILES_DIR` | Copy `profiles.yml.example` to the correct location |
 | `Could not find profile named 'interview_lab'` | Wrong working directory or profile name mismatch | Run `dbt debug` from repo root; verify `profile:` in `dbt_project.yml` matches `profiles.yml` |
-| `No module named 'dbt.adapters.duckdb'` | `dbt-duckdb` not installed (dbt 1.8-1.9.x only) | `pip install dbt-duckdb` |
-| `Runtime Error: Unrecognized adapter type 'duckdb'` | `dbt-duckdb` not installed alongside `dbt-core` (dbt 1.8-1.9.x) | `pip install --upgrade dbt-core dbt-duckdb` |
+| `No module named 'dbt.adapters.duckdb'` | `dbt-duckdb` not installed | `pip install dbt-duckdb` |
+| `Runtime Error: Unrecognized adapter type 'duckdb'` | `dbt-duckdb` not installed alongside `dbt-core` | `pip install --upgrade "dbt-core>=1.8.0,<2" dbt-duckdb` |
+| `dbt-core` shows 2.x | Accidental dbt 2 install | `pip install "dbt-core>=1.8.0,<2" dbt-duckdb` (recreate the venv if needed) |
 
 ## 7. Install dbt packages
 ```bash
@@ -316,6 +310,5 @@ If all of the above passes, you've successfully:
 
 ### Still stuck?
 - Check dbt logs in `logs/dbt.log`
-- Verify `dbt --version` shows `>=1.8.0` (1.8–1.9.x and 2.x supported; we verify on 1.10+/1.12 and 2.x)
+- Verify `dbt --version` shows Core **1.8–1.x** (`<2`; we verify on 1.10+/1.12)
 - Confirm `profiles.yml` path with `dbt debug --config-dir`
-- If using dbt 2.x, adapter type will show as `duckdb (remote)` (built-in support)

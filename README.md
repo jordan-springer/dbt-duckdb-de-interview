@@ -9,7 +9,7 @@
 ## Success criteria
 Before your interview, you must confirm:
 - ✅ **DuckDB CLI installed** (`duckdb --version` works — this is the standalone binary, not just the Python adapter)
-- ✅ **dbt installed** (`dbt --version` shows `dbt-core>=1.8.0` — 1.8–1.9.x and 2.x supported; we verify on 1.10+/1.12 and 2.x)
+- ✅ **dbt installed** (`dbt --version` shows `dbt-core` **1.8–1.x** — pin `<2`; we verify on 1.10+/1.12)
 - ✅ DuckDB adapter configured (`dbt debug` passes)
 - ✅ Seeds, models, tests run successfully
 - ✅ You can query `data/interview.duckdb` directly with the DuckDB CLI
@@ -23,8 +23,8 @@ Before your interview, you must confirm:
 brew install duckdb  # macOS
 # Linux: see SETUP.md for install script
 
-# Install dbt (2.x has built-in DuckDB; 1.8-1.9.x needs dbt-duckdb)
-pip install "dbt-core>=1.8.0" dbt-duckdb  # Works for both versions
+# Install dbt Core 1.x + DuckDB adapter (do not use dbt 2.x for this lab)
+pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 
 # Clone and configure
 git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
@@ -48,7 +48,7 @@ duckdb data/interview.duckdb
 winget install DuckDB.cli
 
 # Install dbt (then see SETUP.md for detailed profile configuration)
-pip install "dbt-core>=1.8.0" dbt-duckdb
+pip install "dbt-core>=1.8.0,<2" dbt-duckdb
 
 # Clone, then create ~/.dbt before copying the profile
 git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
