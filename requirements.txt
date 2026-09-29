@@ -1,4 +1,5 @@
-# Pin to dbt Core 1.x. dbt 2.x is too new for this lab and breaks the YAML/test shape we ship.
+# Pin to dbt Core 1.x. dbt 2.x is too new for this lab.
+# Requires Python 3.10+ to resolve current 1.x (3.9 silently caps at deprecated 1.10.x).
 # dbt-duckdb is required on 1.8–1.9.x (and fine on 1.10–1.12).
 dbt-core>=1.8.0,<2
 dbt-duckdb>=1.8.0,<2
