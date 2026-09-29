@@ -1,7 +1,7 @@
 # Senior Data Engineer — Technical Interview Setup
 
 **Purpose:** Validate your local environment before a live coding interview.  
-**Not a take-home puzzle** — this is a quick setup check using a fake Salesforce-style CRM A/B experiment dataset (dbt + DuckDB).
+**Not a take-home puzzle** — this is a quick setup check using a fake Salesforce-style CRM / mortgage-lead dataset (dbt + DuckDB) aligned to the Architecture Interview warehouse models.
 
 ## Time estimate
 30–60 minutes for environment setup and verification.
@@ -60,10 +60,10 @@ copy profiles.yml.example %USERPROFILE%\.dbt\profiles.yml
 See **[SETUP.md](SETUP.md)** for detailed Windows instructions (CMD vs PowerShell, profile paths) and troubleshooting.
 
 ## What's included
-- **Staging models:** Clean Salesforce-style `lead`, `campaign`, `campaign_member` seeds
-- **Marts:** Dimensions, fact table, and an A/B experiment performance summary
+- **Seeds / staging:** a-lead (`LEAD`), b-lead (`BLEAD__C`), loan milestones, marketing spend
+- **Marts (Architecture Interview):** `dim_lead`, `fact_conversion_transaction`, `fact_marketing_spend`
 - **Schema:** All seeds and models land in DuckDB default schema `main` (no custom `edw` / `sfdc`)
-- **Tests:** Schema constraints, accepted values, foreign keys
+- **Tests:** Unique/not_null, accepted values on status / milestone / channel
 
 ## Verification queries
 After `dbt run`, confirm in DuckDB CLI:
@@ -77,10 +77,13 @@ duckdb data/interview.duckdb
 SHOW SCHEMAS;
 SHOW ALL TABLES;
 
--- Verify models materialized (all in main)
-SELECT COUNT(*) FROM dim_leads;
-SELECT COUNT(*) FROM stg_sfdc__leads;
--- or: SELECT COUNT(*) FROM main.dim_leads;
+-- Verify Architecture Interview marts (all in main)
+SELECT COUNT(*) FROM dim_lead;
+SELECT COUNT(*) FROM fact_conversion_transaction;
+SELECT COUNT(*) FROM fact_marketing_spend;
+SELECT COUNT(*) FROM stg_sfdc__a_leads;
+SELECT COUNT(*) FROM stg_sfdc__b_leads;
+-- or: SELECT COUNT(*) FROM main.dim_lead;
 ```
 
 ## Detailed setup guide

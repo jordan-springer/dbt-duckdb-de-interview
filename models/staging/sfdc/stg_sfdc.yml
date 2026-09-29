@@ -1,23 +1,11 @@
 version: 2
 
 models:
-  - name: stg_sfdc__lead_history
-    description: Staging model for Salesforce lead field history (union of history seeds)
+  - name: stg_sfdc__a_leads
+    description: Staging for Salesforce LEAD (a-lead) — one row per person / customer
     columns:
       - name: lead_id
-        description: Lead identifier
-        data_tests:
-          - not_null
-      - name: valid_from
-        description: Effective start timestamp for this history row
-        data_tests:
-          - not_null
-
-  - name: stg_sfdc__leads
-    description: Staging model for Salesforce leads
-    columns:
-      - name: lead_id
-        description: Unique lead identifier
+        description: Unique a-lead identifier
         data_tests:
           - unique
           - not_null
@@ -29,38 +17,57 @@ models:
         description: Lead status
         data_tests:
           - accepted_values:
-              values: ['Open', 'Working', 'Qualified', 'Unqualified', 'Converted']
-      - name: is_converted
-        description: Whether the lead has been converted
-        data_tests:
-          - not_null
+              values: ['Working', 'Converted', 'Closed Lost']
 
-  - name: stg_sfdc__campaigns
-    description: Staging model for Salesforce campaigns
+  - name: stg_sfdc__b_leads
+    description: Staging for Salesforce BLEAD__C (b-lead) — one row per form submission (attribution / resubmission story)
     columns:
-      - name: campaign_id
-        description: Unique campaign identifier
+      - name: b_lead_id
+        description: Unique b-lead / submission identifier
         data_tests:
           - unique
           - not_null
-      - name: campaign_name
+      - name: lead_id
+        description: FK to a-lead
+        data_tests:
+          - not_null
+
+  - name: stg_loan_milestones
+    description: Staging for loan funnel milestone events
+    columns:
+      - name: lead_id
+        description: FK to a-lead
+        data_tests:
+          - not_null
+      - name: milestone_type
+        description: Funnel milestone (lead, contact, opportunity, file_started, funded)
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['lead', 'contact', 'opportunity', 'file_started', 'funded']
+      - name: milestone_timestamp
+        description: When the milestone occurred
+        data_tests:
+          - not_null
+
+  - name: stg_marketing_spend
+    description: Staging for daily campaign marketing spend
+    columns:
+      - name: spend_date
+        description: Spend date
+        data_tests:
+          - not_null
+      - name: campaign
         description: Campaign name
         data_tests:
           - not_null
-
-  - name: stg_sfdc__campaign_members
-    description: Staging model for Salesforce campaign members
-    columns:
-      - name: campaign_member_id
-        description: Unique campaign member identifier
-        data_tests:
-          - unique
-          - not_null
-      - name: campaign_id
-        description: Foreign key to campaigns
+      - name: channel
+        description: Marketing channel
         data_tests:
           - not_null
-      - name: lead_id
-        description: Foreign key to leads
+          - accepted_values:
+              values: ['Google', 'Bing', 'Purchased Leads']
+      - name: cost
+        description: Spend amount
         data_tests:
           - not_null
