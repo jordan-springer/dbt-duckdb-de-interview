@@ -59,9 +59,11 @@ Expected output: `v1.x.x` or similar.
 - The DuckDB CLI binary (step 1) is still required separately from the Python adapter
 
 ### Option A: pip (recommended)
+From the repo root (after clone):
 ```bash
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
+pip install -r requirements.txt
 ```
+Equivalent pin: `pip install "dbt-core>=1.8.0,<2" dbt-duckdb`
 
 ### Option B: Virtual environment (cleaner isolation)
 ```bash
@@ -70,8 +72,8 @@ source venv/bin/activate  # macOS/Linux
 # venv\Scripts\activate   # Windows CMD
 # venv\Scripts\Activate.ps1  # Windows PowerShell
 
-# Then install dbt Core 1.x + adapter
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
+# Then install from repo root (after clone)
+pip install -r requirements.txt
 ```
 
 ### Option C: Alternative package managers

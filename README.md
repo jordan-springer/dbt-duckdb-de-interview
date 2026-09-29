@@ -23,12 +23,10 @@ Before your interview, you must confirm:
 brew install duckdb  # macOS
 # Linux: see SETUP.md for install script
 
-# Install dbt Core 1.x + DuckDB adapter (do not use dbt 2.x for this lab)
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
-
-# Clone and configure
+# Clone and configure, then install dbt (Core 1.x pin in requirements.txt; do not use dbt 2.x)
 git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
 cd senior-de-technical-interview-setup
+pip install -r requirements.txt
 mkdir -p ~/.dbt
 cp profiles.yml.example ~/.dbt/profiles.yml
 
@@ -47,12 +45,10 @@ duckdb data/interview.duckdb
 # Install DuckDB CLI
 winget install DuckDB.cli
 
-# Install dbt (then see SETUP.md for detailed profile configuration)
-pip install "dbt-core>=1.8.0,<2" dbt-duckdb
-
-# Clone, then create ~/.dbt before copying the profile
+# Clone, then install from requirements (Core 1.x pin; do not use dbt 2.x)
 git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
 cd senior-de-technical-interview-setup
+pip install -r requirements.txt
 mkdir %USERPROFILE%\.dbt
 copy profiles.yml.example %USERPROFILE%\.dbt\profiles.yml
 ```
