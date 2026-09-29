@@ -3,7 +3,8 @@ with campaign_members as (
 ),
 
 leads as (
-    select * from {{ ref('stg_sfdc__leads') }}
+    select * from {{ ref('dim_leads') }}
+    where is_current
 ),
 
 campaigns as (

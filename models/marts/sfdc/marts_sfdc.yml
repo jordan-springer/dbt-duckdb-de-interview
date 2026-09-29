@@ -2,13 +2,30 @@ version: 2
 
 models:
   - name: dim_leads
-    description: Dimension table for leads with conversion metrics
+    description: SCD Type 2 dimension for leads with conversion metrics
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - lead_id
+              - valid_from
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - lead_id
+          config:
+            where: "is_current"
     columns:
       - name: lead_id
-        description: Unique lead identifier
+        description: Lead identifier (one row per version)
         data_tests:
-          - unique
           - not_null
+      - name: valid_from
+        description: Start of validity for this lead version
+        data_tests:
+          - not_null
+      - name: is_current
+        description: Whether this row is the current version for the lead
       - name: email
         description: Lead email address
         data_tests:
