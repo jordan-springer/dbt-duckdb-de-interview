@@ -5,14 +5,12 @@ models:
     description: SCD Type 2 dimension for leads with conversion metrics
     tests:
       - dbt_utils.unique_combination_of_columns:
-          arguments:
-            combination_of_columns:
-              - lead_id
-              - valid_from
+          combination_of_columns:
+            - lead_id
+            - valid_from
       - dbt_utils.unique_combination_of_columns:
-          arguments:
-            combination_of_columns:
-              - lead_id
+          combination_of_columns:
+            - lead_id
           config:
             where: "is_current"
     columns:
@@ -69,5 +67,4 @@ models:
         data_tests:
           - not_null
           - accepted_values:
-              arguments:
-                values: ['A', 'B']
+              values: ['A', 'B']
