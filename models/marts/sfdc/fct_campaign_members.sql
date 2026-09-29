@@ -27,7 +27,7 @@ final as (
         l.converted_date
     from campaign_members cm
     left join campaigns c on cm.campaign_id = c.campaign_id
-    left join leads l on cm.lead_id = l.lead_id
+    inner join leads l on cm.lead_id = l.lead_id
 )
 
 select * from final

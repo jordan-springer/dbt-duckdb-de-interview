@@ -17,6 +17,12 @@ renamed as (
         converted_date::date as converted_date,
         owner_id
     from source
+),
+
+qualified_leads as (
+    select *
+    from renamed
+    where status != 'Unqualified'
 )
 
-select * from renamed
+select * from qualified_leads
