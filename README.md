@@ -62,7 +62,7 @@ See **[SETUP.md](SETUP.md)** for detailed Windows instructions (CMD vs PowerShel
 ## What's included
 - **Staging models:** Clean Salesforce-style `lead`, `campaign`, `campaign_member` seeds
 - **Marts:** Dimensions, fact table, and an A/B experiment performance summary
-- **Custom schemas:** Staging models and seeds land in `edw`, marts land in `sfdc`
+- **Schema:** All seeds and models land in DuckDB default schema `main` (no custom `edw` / `sfdc`)
 - **Tests:** Schema constraints, accepted values, foreign keys
 
 ## Verification queries
@@ -77,9 +77,10 @@ duckdb data/interview.duckdb
 SHOW SCHEMAS;
 SHOW ALL TABLES;
 
--- Verify models materialized
-SELECT COUNT(*) FROM sfdc.dim_leads;
-SELECT COUNT(*) FROM edw.stg_sfdc__leads;
+-- Verify models materialized (all in main)
+SELECT COUNT(*) FROM dim_leads;
+SELECT COUNT(*) FROM stg_sfdc__leads;
+-- or: SELECT COUNT(*) FROM main.dim_leads;
 ```
 
 ## Detailed setup guide
