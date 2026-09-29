@@ -93,8 +93,8 @@ dbt --version
 
 ## 3. Clone this repository
 ```bash
-git clone https://github.com/jordan-springer/dbt-duckdb-de-interview.git
-cd dbt-duckdb-de-interview
+git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
+cd senior-de-technical-interview-setup
 ```
 
 ## 4. Configure profiles.yml
@@ -139,9 +139,11 @@ Then rename the example file:
 cp profiles.yml.example profiles.yml  # or rename on Windows
 ```
 
-## 5. Create the data directory
+## 5. Data directory (recovery only)
 
-DuckDB requires the parent directory to exist before creating the database file.
+A normal clone already includes `data/` (tracked via `data/.gitkeep`). You do **not** need to create it for a fresh setup.
+
+Only recreate it if you deleted `data/` and see `Cannot open file "...data/interview.duckdb": No such file or directory`:
 
 **macOS / Linux:**
 ```bash
@@ -157,8 +159,6 @@ mkdir data
 ```powershell
 New-Item -ItemType Directory -Force -Path data
 ```
-
-**Note:** If you've just cloned the repo, this directory already exists (tracked via `data/.gitkeep`). This step prevents the "No such file or directory" error on fresh clones or after removing the directory.
 
 ## 6. Verify dbt connection
 ```bash
@@ -309,7 +309,7 @@ If all of the above passes, you've successfully:
 - **Permission denied:** Don't use `sudo pip`. Use a virtual environment or `pip install --user`.
 
 ### General debugging
-- **Check working directory:** Run `pwd` (macOS/Linux) or `cd` (Windows). You must be in the repo root (`dbt-duckdb-de-interview/`).
+- **Check working directory:** Run `pwd` (macOS/Linux) or `cd` (Windows). You must be in the repo root (`senior-de-technical-interview-setup/`).
 - **Clear cache:** If models aren't rebuilding, run `dbt clean` then `dbt run` again.
 - **Fresh start:** Delete `data/interview.duckdb*`, `target/`, `dbt_packages/`, then re-run `dbt deps && dbt seed && dbt run && dbt test`.
 - **Python environment conflicts:** Create a fresh virtual environment and reinstall dbt.

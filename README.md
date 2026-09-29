@@ -1,7 +1,7 @@
-# dbt + DuckDB Pre-Interview Setup Lab
+# Senior Data Engineer — Technical Interview Setup
 
-**Purpose:** Validate your local environment before a live dbt coding interview.  
-**Not a take-home puzzle** — this is a quick setup check using a fake Salesforce-style CRM A/B experiment dataset.
+**Purpose:** Validate your local environment before a live coding interview.  
+**Not a take-home puzzle** — this is a quick setup check using a fake Salesforce-style CRM A/B experiment dataset (dbt + DuckDB).
 
 ## Time estimate
 30–60 minutes for environment setup and verification.
@@ -11,7 +11,6 @@ Before your interview, you must confirm:
 - ✅ **DuckDB CLI installed** (`duckdb --version` works — this is the standalone binary, not just the Python adapter)
 - ✅ **dbt installed** (`dbt --version` shows `dbt-core>=1.8.0` — both dbt 1.8-1.9.x and 2.x work)
 - ✅ DuckDB adapter configured (`dbt debug` passes)
-- ✅ `data/` directory exists (prevents "No such file or directory" error)
 - ✅ Seeds, models, tests run successfully
 - ✅ You can query `data/interview.duckdb` directly with the DuckDB CLI
 - ✅ You can modify a model and redeploy with `dbt run --select ...`
@@ -28,12 +27,10 @@ brew install duckdb  # macOS
 pip install "dbt-core>=1.8.0" dbt-duckdb  # Works for both versions
 
 # Clone and configure
-git clone https://github.com/jordan-springer/dbt-duckdb-de-interview.git
-cd dbt-duckdb-de-interview
+git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
+cd senior-de-technical-interview-setup
+mkdir -p ~/.dbt
 cp profiles.yml.example ~/.dbt/profiles.yml
-
-# Create data directory (required before first connection)
-mkdir -p data
 
 # Run the pipeline
 dbt deps
@@ -53,8 +50,11 @@ winget install DuckDB.cli
 # Install dbt (then see SETUP.md for detailed profile configuration)
 pip install "dbt-core>=1.8.0" dbt-duckdb
 
-# Create data directory before running dbt
-mkdir data
+# Clone, then create ~/.dbt before copying the profile
+git clone https://github.com/jordan-springer/senior-de-technical-interview-setup.git
+cd senior-de-technical-interview-setup
+mkdir %USERPROFILE%\.dbt
+copy profiles.yml.example %USERPROFILE%\.dbt\profiles.yml
 ```
 
 See **[SETUP.md](SETUP.md)** for detailed Windows instructions (CMD vs PowerShell, profile paths) and troubleshooting.
